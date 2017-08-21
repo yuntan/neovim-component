@@ -236,12 +236,16 @@ export default class NeovimInput {
 
     startComposition(_: Event) {
         log.debug('start composition');
+        this.element.style.color = 'red'; // FIXME
+        this.element.style.width = 'auto';
         this.ime_running = true;
     }
 
     endComposition(event: CompositionEvent) {
         log.debug('end composition');
         this.inputToNeovim(event.data, event);
+        this.element.style.color = 'transparent';
+        this.element.style.width = '1px';
         this.ime_running = false;
     }
 
